@@ -1,4 +1,5 @@
 import { Button, ButtonGroup, Grid, GridItem, Show } from "@chakra-ui/react";
+import NavBAr from "./Components/NavBAr";
 
 function App() {
   // in below line you can see back tick because we are inserting double quotation marks inside them
@@ -9,8 +10,8 @@ function App() {
         lg: ` "nav nav" "aside main" `,
       }}
     >
-      <GridItem area="nav" bg="coral">
-        nav
+      <GridItem area="nav">
+        <NavBAr></NavBAr>
       </GridItem>
       <GridItem area="aside" bg="gold">
         aside
