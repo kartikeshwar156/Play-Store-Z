@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import API_client, { CanceledError } from "../Services/API_client";
 
-interface Game {
+export interface Game {
   id: number;
   name: string;
+  background_image: string;
 }
 
-interface FetchGameResponse {
+export interface FetchGameResponse {
   count: number;
   results: Game[];
 }
