@@ -1,6 +1,7 @@
 import { Button, ButtonGroup, Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBAr from "./Components/NavBAr";
 import GameGrid from "./Components/GameGrid";
+import GenreList from "./Components/GenreList";
 
 function App() {
   // in below line you can see back tick because we are inserting double quotation marks inside them
@@ -16,7 +17,7 @@ function App() {
       </GridItem>
       <GridItem area="aside">
         <Show above="lg">
-        aside
+        <GenreList></GenreList>
         </Show>
       </GridItem>
         <GridItem area="main">
