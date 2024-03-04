@@ -5,9 +5,11 @@ import GenreList from "./Components/GenreList";
 import { useState } from "react";
 import { Genre } from "./Hooks/useGenres";
 import PlatformSelecter from "./Components/PlatformSelecter";
+import { Platform } from "./Hooks/usePlatforms";
 
 function App() {
   const [selectedGenre, setSelectedGenre]=useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform]=useState<Platform | null>(null);
 
   // in below line you can see back tick because we are inserting double quotation marks inside them
   return (
@@ -31,8 +33,8 @@ function App() {
         </Show>
       </GridItem>
         <GridItem area="main">
-        <PlatformSelecter></PlatformSelecter>
-          <GameGrid selectedGenre={selectedGenre}></GameGrid>
+        <PlatformSelecter selectedPlatform={selectedPlatform} onSelectPlatform={(platform) => setSelectedPlatform(platform)}></PlatformSelecter>
+          <GameGrid selectedPlatform={selectedPlatform} selectedGenre={selectedGenre}></GameGrid>
         </GridItem>
     </Grid>
   ); // First row will have two columns 'nav' and 'nav', 2nd row will have two columns 'aside' and 'main'
