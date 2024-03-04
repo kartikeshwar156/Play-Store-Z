@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API_client, { CanceledError } from "../Services/API_client";
 import useData from "./useData";
+import { Genre } from "./useGenres";
 
 export interface Platform{
 	id: number;
@@ -20,8 +21,8 @@ export interface Game {
 //   results: Game[];
 // }
 
-const useGames = () => {
-  return useData<Game>('/games')
+const useGames = (selectedGenre: Genre | null) => {
+  return useData<Game>('/games', {params: {genres: selectedGenre?.id}}, [selectedGenre?.id]) // '?' is sued because selected genre can be null and  {params: {genres: selectedGenre?.id}} is an object where we have returned 'genres' (use this particular name) for filtering  
 };
 
 export default useGames;

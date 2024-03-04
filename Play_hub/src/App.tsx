@@ -2,8 +2,12 @@ import { Button, ButtonGroup, Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBAr from "./Components/NavBAr";
 import GameGrid from "./Components/GameGrid";
 import GenreList from "./Components/GenreList";
+import { useState } from "react";
+import { Genre } from "./Hooks/useGenres";
 
 function App() {
+  const [selectedGenre, setSelectedGenre]=useState<Genre | null>(null);
+
   // in below line you can see back tick because we are inserting double quotation marks inside them
   return (
     <Grid
@@ -22,11 +26,11 @@ function App() {
       </GridItem>
       <GridItem area="aside" paddingX='5px'>
         <Show above="lg">
-        <GenreList></GenreList>
+        <GenreList onSelectedGenre={(genre) => setSelectedGenre(genre)}></GenreList>
         </Show>
       </GridItem>
         <GridItem area="main">
-          <GameGrid></GameGrid>
+          <GameGrid selectedGenre={selectedGenre}></GameGrid>
         </GridItem>
     </Grid>
   ); // First row will have two columns 'nav' and 'nav', 2nd row will have two columns 'aside' and 'main'
