@@ -28,7 +28,9 @@ const useGames = (gameQuery: GameQuery) => {
     {
       params: {
         genres: gameQuery.genre?.id,
-        platforms: gameQuery.platform?.id }
+        platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder,
+      },
     },
     [gameQuery]
   ); // '?' is sued because selected genre can be null and  {params: {genres: selectedGenre?.id}} is an object where we have returned 'genres' (use this particular name) for filtering
