@@ -7,9 +7,16 @@ import { Genre } from "./Hooks/useGenres";
 import PlatformSelecter from "./Components/PlatformSelecter";
 import { Platform } from "./Hooks/usePlatforms";
 
+export interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+}
+
 function App() {
-  const [selectedGenre, setSelectedGenre]=useState<Genre | null>(null);
-  const [selectedPlatform, setSelectedPlatform]=useState<Platform | null>(null);
+  // const [selectedGenre, setSelectedGenre]=useState<Genre | null>(null);
+  // const [selectedPlatform, setSelectedPlatform]=useState<Platform | null>(null);
+
+  const [gameQuery, setGameQuery]=useState<GameQuery>({} as GameQuery)
 
   // in below line you can see back tick because we are inserting double quotation marks inside them
   return (
@@ -29,12 +36,12 @@ function App() {
       </GridItem>
       <GridItem area="aside" paddingX='5px'>
         <Show above="lg">
-        <GenreList onSelectedGenre={(genre) => setSelectedGenre(genre)}></GenreList>
+        <GenreList onSelectedGenre={(genre) => setGameQuery({...gameQuery, genre: genre})}></GenreList>
         </Show>
       </GridItem>
         <GridItem area="main">
-        <PlatformSelecter selectedPlatform={selectedPlatform} onSelectPlatform={(platform) => setSelectedPlatform(platform)}></PlatformSelecter>
-          <GameGrid selectedPlatform={selectedPlatform} selectedGenre={selectedGenre}></GameGrid>
+        <PlatformSelecter selectedPlatform={gameQuery.platform} onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform: platform})}></PlatformSelecter>
+          <GameGrid gameQuery={gameQuery}></GameGrid>
         </GridItem>
     </Grid>
   ); // First row will have two columns 'nav' and 'nav', 2nd row will have two columns 'aside' and 'main'

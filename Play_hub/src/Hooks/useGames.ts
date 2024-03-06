@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import API_client, { CanceledError } from "../Services/API_client";
 import useData from "./useData";
 import { Genre } from "./useGenres";
+import { GameQuery } from "../App";
 
 export interface Platform {
   id: number;
@@ -21,18 +22,15 @@ export interface Game {
 //   results: Game[];
 // }
 
-const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
-) => {
+const useGames = (gameQuery: GameQuery) => {
   return useData<Game>(
     "/games",
     {
       params: {
-        genres: selectedGenre?.id,
-        platforms: selectedPlatform?.id }
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id }
     },
-    [selectedGenre?.id, selectedPlatform?.id]
+    [gameQuery]
   ); // '?' is sued because selected genre can be null and  {params: {genres: selectedGenre?.id}} is an object where we have returned 'genres' (use this particular name) for filtering
 };
 
