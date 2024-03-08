@@ -15,10 +15,10 @@ interface props {
 }
 
 const GenreList = ({ onSelectedGenre }: props) => {
-  const { data, error, Loading, setLoading } = useGenres();
+  const { data, error, Loading} = useGenres();
 
-  if (error) return null;
-  if (Loading) return <Spinner></Spinner>;
+//   if (error) return null;
+//   if (Loading) return <Spinner></Spinner>;
 
   return (
     <>
